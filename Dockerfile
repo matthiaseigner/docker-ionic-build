@@ -1,5 +1,6 @@
 FROM node:8.3
 # based on https://github.com/netizy/docker-ionic-2
+MAINTAINER    Matthias Eigner (https://github.com/matthiaseigner) [me@matthiaseigner.at]
 
 # auto validate license
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
