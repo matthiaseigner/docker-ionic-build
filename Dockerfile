@@ -20,7 +20,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN apt-get update \
     && apt-get install -y git \
     && apt-get install -y unzip \
-    && npm install -g cordova ionic \
+    && npm install -g cordova ionic meteor-client\
     && npm cache clear --force
 
 # Install Deps
