@@ -20,7 +20,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN apt-get update \
     && apt-get install -y git \
     && apt-get install -y unzip \
-    && npm install -g grunt-cli@"1.2.0" gulp@"3.9.1" bower@"1.8.0" cordova@"6.5.0" ionic@"2.2.1" \
+    && npm install -g cordova ionic \
     && npm cache clear --force
 
 # Install Deps
