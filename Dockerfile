@@ -1,6 +1,5 @@
 FROM node:8.3
 # based on https://github.com/netizy/docker-ionic-2
-MAINTAINER    Matthias Eigner (https://github.com/matthiaseigner) [me@matthiaseigner.at]
 
 # auto validate license
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
@@ -18,9 +17,8 @@ RUN apt-get install oracle-java8-installer -y \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 RUN apt-get update \
-    && apt-get install -y git \
-    && apt-get install -y unzip \
-    && npm install -g cordova ionic meteor-client-bundler\
+    && apt-get install -y git sudo unzip \
+    && npm install -g cordova ionic meteor-client-bundler \
     && npm cache clear --force
 
 # Install Deps
@@ -50,5 +48,7 @@ RUN cd /opt \
 
 ENV PATH $PATH:/opt/gradle/gradle-4.1/bin
 
-# Cleaning
-RUN apt-get clean
+# install meteor
+RUN curl https://install.meteor.com/ | sh
+
+RUN adduser meteor
