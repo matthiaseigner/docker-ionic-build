@@ -32,6 +32,7 @@ RUN cd /opt && wget https://dl.google.com/android/repository/tools_r25.2.3-linux
     && (echo y | android-sdk-linux/tools/android update sdk -u -a -t 1,2,3,6,10,14,16,23,32,33,34,35,36,38,124,160,166,167,168,169,170,171,172) \
     && cd /opt/android-sdk-linux/tools/bin \
     && echo "count=0" > ~/.android/repositories.cfg \
+    && ./sdkmanager "platforms;android-25" \
     && yes|./sdkmanager --update
 
 ENV ANDROID_HOME /opt/android-sdk-linux
@@ -53,7 +54,9 @@ RUN adduser meteor
 RUN echo "meteor ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN chown -R meteor:meteor /opt/android-sdk-linux
 
-RUN mkdir /src/
+RUN mkdir /src/ \
+    && cp -R ~/.android /home/meteor/.android \
+    && chown meteor:meteor /home/meteor/.android -R
 
 USER meteor
 
