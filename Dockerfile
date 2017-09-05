@@ -48,9 +48,13 @@ RUN cd /opt \
 
 ENV PATH $PATH:/opt/gradle/gradle-4.1/bin
 
-# install meteor
-RUN curl https://install.meteor.com/ | sh
-
 RUN adduser meteor
 
+RUN echo "meteor ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+RUN mkdir /src/
+
 USER meteor
+
+# install meteor
+RUN curl https://install.meteor.com/ | sh
