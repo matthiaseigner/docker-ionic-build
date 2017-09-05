@@ -51,6 +51,7 @@ ENV PATH $PATH:/opt/gradle/gradle-4.1/bin
 RUN adduser meteor
 
 RUN echo "meteor ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN chown -R meteor:meteor /opt/android-sdk-linux
 
 RUN mkdir /src/
 
